@@ -40,6 +40,12 @@ def join(message):
     join_room(room)
     emit('status', {'msg':  session.get('username') + ' has entered the room.'}, room=room)
 
+@socketio.on('text', namespace='/chat')
+def text(message):
+    room = session.get('room')
+    emit('message', {'msg': session.get('username') + ' : ' + message['msg']}, room=room)
 
+
+    
 if __name__ == "__main__":
     app.run(debug=True)
