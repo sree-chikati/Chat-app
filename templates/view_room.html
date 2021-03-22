@@ -54,5 +54,19 @@
 
     let page = 0;
 
-    
+    document.getElementById("load_older_messages_btn").onclick = (e) => {
+        page += 1;
+        fetch("/rooms/{{ room._id }}/messages?page=" + page, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            response.json().then(messages => {
+                messages.reverse().forEach(message => prepend_message(message.text, message.sender, message.created_at));
+            })
+        })
+    };
+
+
 </script>
