@@ -1,0 +1,27 @@
+{% extends 'base.html' %}{% block content %}
+
+<div>
+<h1>Welcome to chat room: {{ room.name }}</h1>
+
+
+<button type="button" id="load_older_messages_btn">Load Older Messages</button>
+<div id="messages">
+    {% for message in messages %}
+        <div><b>{{ message.sender }}&nbsp;[{{ message.created_at }}]:&nbsp;</b> {{ message.text }}</div>
+    {% endfor %}
+</div>
+
+<form id="message_input_form">
+    <input type="text" id="message_input" placeholder="Enter your message here">
+    <button type="submit">Send</button>
+</form>
+
+<h3>Members</h3>
+<ul>
+    {% for member in room_members %}
+        <li>{{ member._id.username }}</li>
+    {% endfor %}
+</ul>
+
+</div>
+
