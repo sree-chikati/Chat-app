@@ -75,5 +75,11 @@
         messages_div.insertBefore(newNode, messages_div.firstChild);
     }
 
+    window.onbeforeunload = function () {
+        socket.emit('leave_room', {
+            username: "{{ username }}",
+            room: "{{ room._id }}"
+        })
+    };
 
 </script>
