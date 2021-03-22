@@ -16,6 +16,33 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
+##########################################
+#              Main Routes               #
+##########################################
+@app.route('/')
+def home():
+    rooms = []
+    if current_user.is_authenticated:
+        rooms = get_rooms_for_user(current_user.username)
+    return render_template("home.html", rooms=rooms)
+
+
+def create_room():
+    message = ''
+    if request.method == 'POST':
+        room_name = request.form.get('room_name')
+        usernames = [username.strip() for username in request.form.get('members').split(',')]
+
+        if len(room_name) and len(usernames):
+            room_id = save_room(room_name, current_user.username)
+            if current_user.username in usernames:
+                usernames.remove(current_user.username)
+            add_room_members(room_id, room_name, usernames, current_user.username)
+            return redirect(url_for('view_room', room_id=room_id))
+        else:
+            message = "Failed to create room"
+    return render_template('create_room.html', message=message)
+
 
 ##########################################
 #              Auth Routes               #
