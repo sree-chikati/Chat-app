@@ -1,57 +1,68 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from flask_socketio import SocketIO, join_room, leave_room, emit
-from flask_session import Session
+from datetime import datetime
+
+from bson.json_util import dumps
+from flask import Flask, render_template, request, redirect, url_for
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask_socketio import SocketIO, join_room, leave_room
+from pymongo.errors import DuplicateKeyError
+
+from db import get_user, save_user, save_room, add_room_members, get_rooms_for_user, get_room, is_room_member, \
+    get_room_members, is_room_admin, update_room, remove_room_members, save_message, get_messages
 
 app = Flask(__name__)
+app.secret_key = "sfdjkafnk"
+socketio = SocketIO(app)
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
 
-app.config['SECRET_KEY'] = 'secret'
-app.config['SESSION_TYPE'] = 'filesystem'
-
-Session(app)
-
-socketio = SocketIO(app, manage_session=False)
 
 ##########################################
-#              Main Routes               #
+#              Auth Routes               #
 ##########################################
 
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
 
-@app.route('/chat', methods=['GET', 'POST'])
-def chat():
-    if(request.method=='POST'):
-        username = request.form['username']
-        room = request.form['room']
-        #Store the data in session
-        session['username'] = username
-        session['room'] = room
-        return render_template('chat.html', session = session)
-    else:
-        if(session.get('username') is not None):
-            return render_template('chat.html', session = session)
+    message = ''
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password_input = request.form.get('password')
+        user = get_user(username)
+
+        if user and user.check_password(password_input):
+            login_user(user)
+            return redirect(url_for('home'))
         else:
-            return redirect(url_for('index'))
+            message = 'Failed to login!'
+    return render_template('login.html', message=message)
 
-@socketio.on('join', namespace='/chat')
-def join(message):
-    room = session.get('room')
-    join_room(room)
-    print('status', {'msg':  session.get('username') + f"has entered the room."}, room=room)
 
-@socketio.on('text', namespace='/chat')
-def text(message):
-    room = session.get('room')
-    print('message', {'msg': session.get('username') + f' : ' + message['msg']}, room=room)
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
 
-@socketio.on('left', namespace='/chat')
-def left(message):
-    room = session.get('room')
-    username = session.get('username')
-    leave_room(room)
-    session.clear()
-    print('status', {'msg': username + f' has left the room.'}, room=room)
+    message = ''
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
+        try:
+            save_user(username, email, password)
+            return redirect(url_for('login'))
+        except DuplicateKeyError:
+            message = "User already exists!"
+    return render_template('signup.html', message=message)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+@app.route("/logout/")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
+if __name__ == '__main__':
+    socketio.run(app, debug=True)
