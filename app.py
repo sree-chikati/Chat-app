@@ -70,7 +70,8 @@ def edit_room(room_id):
     else:
         return "Room not found", 404
 
-
+@app.route('/rooms/<room_id>/')
+@login_required
 def view_room(room_id):
     room = get_room(room_id)
     if room and is_room_member(room_id, current_user.username):
