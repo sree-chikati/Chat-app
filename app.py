@@ -53,7 +53,7 @@ def view_room(room_id):
         room_members = get_room_members(room_id)
         messages = get_messages(room_id)
         return render_template('view_room.html', username=current_user.username, room=room, room_members=room_members,
-                               messages=messages)
+        messages=messages)
     else:
         return "Room not found", 404
 
@@ -73,8 +73,7 @@ def get_older_messages(room_id):
 @socketio.on('send_message')
 def handle_send_message_event(data):
     app.logger.info("{} has sent message to the room {}: {}".format(data['username'],
-                                                                    data['room'],
-                                                                    data['message']))
+    data['room'], data['message']))
     data['created_at'] = datetime.now().strftime("%d %b, %H:%M")
     save_message(data['room'], data['message'], data['username'])
     socketio.emit('receive_message', data, room=data['room'])
@@ -92,6 +91,11 @@ def handle_leave_room_event(data):
     app.logger.info("{} has left the room {}".format(data['username'], data['room']))
     leave_room(data['room'])
     socketio.emit('leave_room_announcement', data, room=data['room'])
+
+
+@login_manager.user_loader
+def load_user(username):
+    return get_user(username)
 
 ##########################################
 #              Auth Routes               #
