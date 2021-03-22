@@ -4,19 +4,33 @@ from flask_session import Session
 
 app = Flask(__name__)
 
+app.config['SECRET_KEY'] = 'secret'
+app.config['SESSION_TYPE'] = 'filesystem'
+
+Session(app)
+
 ##########################################
 #              Main Routes               #
 ##########################################
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    '''Display homepage'''
     return render_template('index.html')
 
-@app.route('/chat')
+@app.route('/chat', methods=['GET', 'POST'])
 def chat():
-    '''Display chatpage'''
-    return render_template('chat.html')
+    if(request.method=='POST'):
+        username = request.form['username']
+        room = request.form['room']
+        #Store the data in session
+        session['username'] = username
+        session['room'] = room
+        return render_template('chat.html', session = session)
+    else:
+        if(session.get('username') is not None):
+            return render_template('chat.html', session = session)
+        else:
+            return redirect(url_for('index'))
 
 if __name__ == "__main__":
     app.run(debug=True)
