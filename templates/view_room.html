@@ -98,6 +98,14 @@
         }
     });
 
-    
+    socket.on('leave_room_announcement', function (data) {
+        console.log(data);
+        const newNode = document.createElement('div');
+        newNode.innerHTML = `<b>${data.username}</b> has left the room`;
+        document.getElementById('messages').appendChild(newNode);
+    });
 
 </script>
+
+
+{% endblock %}
