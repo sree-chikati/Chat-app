@@ -1,19 +1,30 @@
 {% extends 'base.html' %}{% block content %}
 
-<div>
-    <h1>Create Room</h1>
-    <h3>{{ message }}</h3>
-    <form method="post">
-        <label>Room Name:</label>
-        <input type="text" name="room_name">
-        <br>
+<div class="create_room">
+    <div class="container p-5 text-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <h1 class="text-center title">Create a Chat Room!</h1>
+                    <h3>{{ message }}</h3>
+                    <form method="post">
+                        <div class="form-group">
+                            <label>Room Name:</label>
+                            <input type="text" name="room_name">
+                        </div>
 
-        <label>Members:</label>
-        <input type="text" name="members">
-        <br>
+                        <div class="form-group">
+                            <label>Members:</label>
+                            <input type="text" name="members">
+                        </div>
 
-        <button type="submit">Submit</button>
-    </form>
+                        <button type="submit" class="btn btn-primary">Create Room!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
 
 {% endblock %}
