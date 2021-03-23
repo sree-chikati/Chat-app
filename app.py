@@ -27,6 +27,8 @@ def home():
     return render_template("home.html", rooms=rooms)
 
 
+@app.route('/create_room', methods=['GET', 'POST'])
+@login_required
 def create_room():
     message = ''
     if request.method == 'POST':
@@ -69,6 +71,7 @@ def edit_room(room_id):
         return render_template('edit_room.html', room=room, room_members_str=room_members_str, message=message)
     else:
         return "Room not found", 404
+
 
 @app.route('/rooms/<room_id>/')
 @login_required
