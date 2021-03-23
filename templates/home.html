@@ -1,21 +1,24 @@
 {% extends 'base.html' %} {% block content %}
 <!-- MAIN CONTENT -->
-<section class="banner">
-    <div class="container">
+  <div class="home-content">
+    <div class="container p-5">
       <div class="row">
-        <div class="col-12 text-center">
-          <h1>Chat App</h1>
-          <h4 class="py-4">Chat with other users!</h4>
-          
-          <div class="container">
-                <a href="{{ url_for('signup') }}" class="btn btn-primary btn-md">Get Started</a>
+        <div class="col-md-6">
+          <img src="/static/message1.png" alt="" class="w-100" />
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <div class="box text-center">
+            <h1 class="text-center p-2 title">Chat App</h1>
+            <h4 class="py-4">Chat with other users!</h4>
+            <div class="container">
+              <a href="{{ url_for('signup') }}" class="btn btn-primary btn-md">Get Started</a>
+            </div>
           </div>
-  
         </div>
       </div>
     </div>
-    </section>
-  <!-- End Main Content -->
+  </div>
+
   
   <!-- Three Column Section -->
   <section id="services">
@@ -24,21 +27,31 @@
       <div class="row text-center">
     
         <div class="col-md-4 my-2 services">
-          <img src="/static/search.jpg" alt="" class="service-img w-75">
+          <img src="/static/server.png" alt="" class="service-img w-75">
           <h4 class="my-4">Conncting Servers</h4>
-          <p>Add explanation!</p>
+          <p>Before even creating a chat app, I had to make sure the data is being received on both the server side and client side. 
+            I also needed to have a place where this data is being stored and displayed. 
+            This was a challange as I was not familiar with how to connect two servers togehter. 
+            However, I was able to overcome this by learning basics of Websockets and PHP.
+            </p>
         </div>
     
         <div class="col-md-4 my-2 services">
-          <img src="/static/help.jpg" alt="" class="service-img w-75">
+          <img src="/static/connect.png" alt="" class="service-img w-75">
           <h4 class="my-4">Linked User Accounts to Chat</h4>
-          <p>Add explanation!</p>
+          <p>After data was sucessfully being sent and received, I worked on creating an authetication system that would link user accounts.
+            In order to create rooms, it is important to add existing users first. 
+            To solve this, I utlized MongoDB and Socket.io to connect the user accounts so they are able to chat with one another.
+            </p>
         </div>
     
         <div class="col-md-4 my-2 services">
-          <img src="/static/save.jpg" alt="" class="service-img w-75">
+          <img src="/static/chat.png" alt="" class="service-img w-75">
           <h4 class="my-4">Real Time Chatting</h4>
-          <p>Add explanation!</p>
+          <p>Finally, one the authetication was working I needed to display the messages being sent by users in specific chat rooms.
+            With a little JavaScript and tying in Socket.io, I was able to showcase messages being sent my users. 
+            This is still a work in progress and I hope to improve it's functionalities more.
+          </p>
         </div>
       </div>
     </div>

@@ -3,22 +3,23 @@
 <div class="create_room">
     <div class="container p-5 text-center">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-12 d-flex justify-content-center align-items-center">
                 <div class="box">
-                    <h1 class="text-center title">Create a Chat Room!</h1>
+                    <h1 class="text-center title p-4">Create a Chat Room!</h1>
                     <h3>{{ message }}</h3>
-                    <form method="post">
+                    <form method="post" class="p-4 text-center">
                         <div class="form-group">
                             <label>Room Name:</label>
-                            <input type="text" name="room_name">
+                            <input type="text" class="form-control" id="room_name" name="room_name" placeholder="Room Name" autofocus=""/>
                         </div>
 
                         <div class="form-group">
                             <label>Members:</label>
-                            <input type="text" name="members">
+                            <input type="text" class="form-control" id="members"  name="members" placeholder="Members" autofocus=""/>
+                            <small id="emailHelp" class="form-text text-muted" >Seperate existing usernames with commas</small>
                         </div>
 
-                        <button type="submit" class="btn btn-primary">Create Room!</button>
+                        <button type="submit" class="btn btn-primary m-3">Create Room!</button>
                     </form>
                 </div>
             </div>

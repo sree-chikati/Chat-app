@@ -1,18 +1,22 @@
 /* ---- IMPORTS ---- */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&family=Source+Sans+Pro:wght@300&display=swap');
 /* 
-font-family: 'Open Sans', sans-serif;
-font-family: 'Roboto Slab', serif;
+font-family: 'Alegreya Sans SC', sans-serif;
+font-family: 'Source Sans Pro', sans-serif;
 */
 /*-- Body Reset --*/
 body {
   overflow-x: hidden;
-  background: white;
+  background: #292929;
+}
+
+h1, p, h2, h3, h4, h5, h6{
+  color: #e6e6e6!important;
 }
 
 h1 {
   text-transform: uppercase;
-  font-family: 'Roboto Slab', serif!important;
+  font-family: 'Alegreya Sans SC', sans-serif!important;
 }
 
 .btn-primary{
@@ -20,40 +24,23 @@ h1 {
   padding: 8px 25px;
   border: none;
   border-radius: 20px;
-  background-image: linear-gradient(to right, #54ffac, #54a7ff);
+  background-image: linear-gradient(to right, #00E2CA, #00E2CA);
   color: black;
 }
 
 .title::before {
   content: '';
-  background-color: #54ffac;
+  background-color: #CC70FD;
   height: 5px;
   width: 200px;
   margin-left: auto;
   margin-right: auto;
   display: block;
-  transform: translateY(63px);
+  transform: translateY(46px);
 }
 
-.title::after {
-  content: '';
-  background-color: #54ffac;
-  height: 10px;
-  width: 50px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 40px;
-  display: block;
-  transform: translateY(18px);
-}
-
-.modal-content{
-  background-color: #ff847ec7;
-}
-
-.modal-body li{
-  list-style: none;
-  color: white;
+.form-group{
+  color: white!important;
 }
 
 /*============= TOP BAR HEADER =============*/
@@ -76,7 +63,7 @@ h1 {
   padding: 0.5rem;
   z-index: 1;
   border: none;
-  background-image: linear-gradient(to right, #54a7ff, #5331ff);
+  background-image: linear-gradient(to right, #292929, #292929);
 }
 
 .navbar-nav li a{
@@ -98,19 +85,8 @@ h1 {
 /*===== MAIN CONTENT =====*/
 
 /*------ Banner Section ------*/
-.banner{
-  background-image: linear-gradient(to right, #54a7ff, #5331ff);
-  color: white;
-  padding: 100px 0;
-}
-
-.banner h1{
-  color: white;
-  font-size: 3rem;
-}
-
-.banner h4{
-  color: white;
+.home-content {
+  padding: 60px 0;
 }
 
 /*------ Services Section ------*/
@@ -142,6 +118,8 @@ h1 {
   padding: 60px 0;
 }
 
+
+/*===== CREATE ROOM =====*/
 .create_room{
   padding: 5rem;
   padding: 80px 0;
@@ -149,33 +127,32 @@ h1 {
 
 /*===== PROFILE =====*/
 .user {
-  padding: 30px 0;
+  padding: 30px 0 0 0;
+}
+
+.ur-rooms{
+  padding-bottom: 3rem;
 }
 
 .profile{
-  color: black!important;
   padding: 0 0 180px 0;
 }
 
-.profile h4{
-  color: black!important;
+.card-title{
+  color: #292929!important;
+}
+
+.fa-user-circle{
+  color: white;
 }
 
 /*===== VIEW ROOM =====*/
-::-webkit-scrollbar {
-  width: 5px;
+.chat-room{
+  margin: 4rem;
 }
 
-::-webkit-scrollbar-track {
-  width: 5px;
-  background: #f5f5f5;
-}
-
-::-webkit-scrollbar-thumb {
-  width: 1em;
-  background-color: #ddd;
-  outline: 1px solid slategrey;
-  border-radius: 1rem;
+.user-box{
+  size: 100px;
 }
 
 .text-small {
@@ -188,6 +165,15 @@ h1 {
   overflow-y: scroll;
 }
 
+.room-box{
+  padding: 1rem;
+}
+
+.member-box h5{
+  padding: 1rem;
+  color:#292929!important;
+}
+
 .rounded-lg {
   border-radius: 0.5rem;
 }
@@ -197,10 +183,12 @@ input::placeholder {
   color: #999;
 }
 
+.fa-arrow-circle-left{
+  color: #FF4F5A;
+}
 
 /*============= FOOTER =============*/
 footer{
-  background-image: linear-gradient(to right, #54a7ff, #5331ff);
   color: white;
   width: 100%;
   text-align: center;
@@ -223,7 +211,7 @@ footer p{
 }
 
 footer span{
-    color:#54ffac;;
+    color:#00E2CA;
 }
 .github{
   color: white;
@@ -232,7 +220,7 @@ footer span{
 }
 
 .github:hover{
-  color: #54ffac;
+  color: #00E2CA;
 }
 
 /*============= MEDIA QUERIES =============*/
