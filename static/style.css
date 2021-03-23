@@ -147,6 +147,20 @@ h1 {
   padding: 80px 0;
 }
 
+/*===== PROFILE =====*/
+.user {
+  padding: 30px 0;
+}
+
+.profile{
+  color: black!important;
+  padding: 0 0 180px 0;
+}
+
+.profile h4{
+  color: black!important;
+}
+
 /*===== VIEW ROOM =====*/
 ::-webkit-scrollbar {
   width: 5px;

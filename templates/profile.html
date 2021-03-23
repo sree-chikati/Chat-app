@@ -1,21 +1,50 @@
 {% extends 'base.html' %}{% block content %}
 
-<div>
-<h1>My Chat App</h1>
-<h3>Hi 
-    {% if current_user.is_authenticated %}
-        {{ current_user.username }}
-    {% endif %}!
-</h3>
+<!--USER INFO -->
+<section class="user">
+    <!-- User Profile -->
+    <div class="container text-center pb-5">
+        <div class="row">
+            <div class="col-12"> 
+                <!-- USER CONTENT -->
+                <div class="user">
+                    <i class="fa fa-user-circle fa-10x"></i>
+                    <div class="user_info">
+                        <br />
+                        <h1>{{ current_user.username }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- User Profile End -->
+</section>
 
-{% if current_user.is_authenticated %}
-    <h3>My rooms</h3>
-    <ul>
-        {% for room in rooms %}
-            <li><a href="/rooms/{{ room._id.room_id }}">{{ room.room_name }}</a></li>
-        {% endfor %}
-    </ul>
-{% endif %}
-</div>
+<section class="profile">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12">
+                <!-- All Playlists Content -->
+                <div class="play">
+                    <h2 class="title">Your Rooms</h2>
+                    <div class="container">
+                        <div class="row">
+                            {% for room in rooms %}
+                            <div class="col-md-4">
+                                <div class="card p-2 m-2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ room.room_name }}</h5>
+                                        <a href="/rooms/{{ room._id.room_id }}" class="btn btn-primary btn-md">View Room</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+</section>
 
 {% endblock %}
+
