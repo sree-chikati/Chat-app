@@ -97,6 +97,41 @@ h1 {
 
 /*===== MAIN CONTENT =====*/
 
+/*------ Banner Section ------*/
+.banner{
+  background-image: linear-gradient(to right, #54a7ff, #5331ff);
+  color: white;
+  padding: 100px 0;
+}
+
+.banner h1{
+  color: white;
+  font-size: 3rem;
+}
+
+.banner h4{
+  color: white;
+}
+
+/*------ Services Section ------*/
+
+#services {
+  padding: 80px 0;
+}
+
+.services-img {
+  margin-top: 20px;
+}
+
+.services {
+  padding: 20px;
+}
+
+.services h4{
+  padding: 5px;
+  margin-top: 25px;
+}
+
 /*===== SIGNUP =====*/
 .sign-content {
   padding: 60px 0;
