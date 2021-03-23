@@ -1,28 +1,51 @@
 {% extends 'base.html' %}{% block content %}
 
-<div>
-<h1>Welcome to chat room: {{ room.name }}</h1>
+<div class="row rounded-lg overflow-hidden shadow">
+    <!-- Users box-->
+    <div class="col-5 px-0">
+      <div class="bg-white">
 
+        <div class="bg-gray px-4 py-2 ">
+          <p class="h5 mb-0 py-1">Chat Room: {{ room.name }}</p>
+          <button type="button" id="load_older_messages_btn">Load Older Messages</button>
+        </div>
 
-<button type="button" id="load_older_messages_btn">Load Older Messages</button>
-<div id="messages">
-    {% for message in messages %}
-        <div><b>{{ message.sender }}&nbsp;[{{ message.created_at }}]:&nbsp;</b> {{ message.text }}</div>
-    {% endfor %}
-</div>
+        <div class="messages-box">
+            <h3>Members</h3>
+            <ul>
+                {% for member in room_members %}
+                    <li>{{ member._id.username }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Chat Box-->
+    <div class="col-7 px-0">
+        <div id = "messages" class="px-4 py-5 chat-box bg-white">
+            <!-- Sender Message-->
+            {% for message in messages %}
+            <div class="media-body ml-3">
+                <div class="rounded py-2 mb-2">
+                <p class="text-small mb-0 text-muted">{{ message.text }}</p>
+                </div>
+                <p class="small text-muted">{{ message.sender }} | {{ message.created_at }}</p>
+            </div>
+            {% endfor %}
+        </div>
 
-<form id="message_input_form">
-    <input type="text" id="message_input" placeholder="Enter your message here">
-    <button type="submit">Send</button>
-</form>
+      <!-- Typing area -->
+      <form action="#" id="message_input_form" class="">
+        <div class="input-group">
+          <input type="text" id="message_input" placeholder="Type a message" aria-describedby="button-addon2" class="form-control rounded-0 border-0 py-4 ">
+          <div class="input-group-append">
+            <button id="button-addon2" type="submit" class="btn btn-primary"> <i class="fa fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </form>
 
-<h3>Members</h3>
-<ul>
-    {% for member in room_members %}
-        <li>{{ member._id.username }}</li>
-    {% endfor %}
-</ul>
-
+    </div>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
@@ -70,7 +93,13 @@
 
     function prepend_message(message, username, created_at) {
         const newNode = document.createElement('div');
-        newNode.innerHTML = `<b>${username}&nbsp;[${created_at}]:&nbsp;</b> ${message}`;
+        newNode.innerHTML = `
+        <div class="media-body ml-3">
+            <div class=" rounded py-2 mb-2">
+                <p class="text-small mb-0 text-muted">${message}</p>
+            </div>
+            <p class="small text-muted">${username} | ${created_at}</p>
+        </div>`;
         const messages_div = document.getElementById('messages');
         messages_div.insertBefore(newNode, messages_div.firstChild);
     }
@@ -85,7 +114,13 @@
     socket.on('receive_message', function (data) {
         console.log(data);
         const newNode = document.createElement('div');
-        newNode.innerHTML = `<b>${data.username}&nbsp;[${data.created_at}]:&nbsp;</b> ${data.message}`;
+        newNode.innerHTML = `
+        <div class="media-body ml-3">
+            <div class=" rounded py-2 mb-2">
+                <p class="text-small mb-0 text-muted">${data.message}</p>
+            </div>
+            <p class="small text-muted">${data.username} | ${data.created_at}</p>
+        </div>`;
         document.getElementById('messages').appendChild(newNode);
     });
 
