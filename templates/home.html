@@ -1,7 +1,49 @@
-{% extends 'base.html' %}{% block content %}
-
-<div>
-<h1>My Chat App</h1>
-</div>
+{% extends 'base.html' %} {% block content %}
+<!-- MAIN CONTENT -->
+<section class="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1>Chat App</h1>
+          <h4 class="py-4">Chat with other users!</h4>
+          
+          <div class="container">
+                <a href="{{ url_for('signup') }}" class="btn btn-primary btn-md">Get Started</a>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    </section>
+  <!-- End Main Content -->
+  
+  <!-- Three Column Section -->
+  <section id="services">
+    <div class="container text-center">
+      <h1 class="title">Lessons Learned</h1>
+      <div class="row text-center">
+    
+        <div class="col-md-4 my-2 services">
+          <img src="/static/search.jpg" alt="" class="service-img w-75">
+          <h4 class="my-4">Conncting Servers</h4>
+          <p>Add explanation!</p>
+        </div>
+    
+        <div class="col-md-4 my-2 services">
+          <img src="/static/help.jpg" alt="" class="service-img w-75">
+          <h4 class="my-4">Linked User Accounts to Chat</h4>
+          <p>Add explanation!</p>
+        </div>
+    
+        <div class="col-md-4 my-2 services">
+          <img src="/static/save.jpg" alt="" class="service-img w-75">
+          <h4 class="my-4">Real Time Chatting</h4>
+          <p>Add explanation!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- End Three Column Section -->
 
 {% endblock %}
