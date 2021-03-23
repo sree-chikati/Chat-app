@@ -21,10 +21,14 @@ login_manager.init_app(app)
 ##########################################
 @app.route('/')
 def home():
+    return render_template("home.html")
+
+@app.route('/profile')
+def profile():
     rooms = []
     if current_user.is_authenticated:
         rooms = get_rooms_for_user(current_user.username)
-    return render_template("home.html", rooms=rooms)
+    return render_template("profile.html", rooms=rooms)
 
 
 @app.route('/create_room', methods=['GET', 'POST'])
@@ -132,7 +136,7 @@ def load_user(username):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('profile'))
 
     message = ''
     if request.method == 'POST':
@@ -142,7 +146,7 @@ def login():
 
         if user and user.check_password(password_input):
             login_user(user)
-            return redirect(url_for('home'))
+            return redirect(url_for('profile'))
         else:
             message = 'Failed to login!'
     return render_template('login.html', message=message)
@@ -151,7 +155,7 @@ def login():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('profile'))
 
     message = ''
     if request.method == 'POST':
