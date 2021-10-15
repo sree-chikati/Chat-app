@@ -131,21 +131,9 @@ h1{
   font-weight: bold;
 }
 
-/*===== ENJOY =====*/
-.enjoy{
-  padding: 0 0 2rem 0!important;
-}
-
-
-/*===== ADIVCE =====*/
-.advice{
-  padding: 4rem;
-}
-
 
 /*============= SEARCH =============*/
 .search-content{
-  background: tan!important;
   height: 100%;
   padding: 7rem;
 }

@@ -34,6 +34,12 @@ def profile():
         rooms = get_rooms_for_user(current_user.username)
     return render_template("profile.html", rooms=rooms)
 
+@app.route('/search')
+@login_required
+def search():
+    username=current_user.username
+    return render_template('search.html', username=username)
+
 
 @app.route('/create_room', methods=['GET', 'POST'])
 @login_required
