@@ -1,50 +1,352 @@
-{% extends 'base.html' %}{% block content %}
+{% extends "base.html" %}
 
-<!--USER INFO -->
-<section class="user">
-    <!-- User Profile -->
-    <div class="container text-center pb-5">
-        <div class="row">
-            <div class="col-12"> 
-                <!-- USER CONTENT -->
-                <div class="user">
-                    <i class="fa fa-user-circle fa-10x"></i>
-                    <div class="user_info">
-                        <br />
-                        <h1>{{ current_user.username }}</h1>
+{% block content %}
+<main>
+  <div class="mt-4">
+      <div class="container d-flex justify-content-center">
+          <div class="col-12">
+            <div class="row">
+                <div class="col-8">
+                    <!-- START OF STORIES -->
+                    <div class="card">
+                      <h4 class="d-flex justify-content-center p-3">Popular Fandoms</h4>
+                        <div class="card-main d-flex justify-content-center">
+                            <ul class="list-unstyled mb-0">
+                                <li class="list-inline-item">
+                                    <button class="btn m-0">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div
+                                                class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary story-profile-photo">
+                                                <img src="{{url_for('static', filename='percy.png')}}" alt="..." width="50", height="50">
+                                            </div>
+                                            <small>Demigods</small>
+                                        </div>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn m-0">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div
+                                                class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary story-profile-photo">
+                                                <img src="{{url_for('static', filename='maze.png')}}" alt="..." width="50", height="50">
+                                            </div>
+                                            <small>Dashner's Army</small>
+                                        </div>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn m-0">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div
+                                                class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary story-profile-photo">
+                                                <img src="{{url_for('static', filename='harry.png')}}" alt="..." width="50", height="50">
+                                            </div>
+                                            <small>Potterheads</small>
+                                        </div>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn m-0">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div
+                                                class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary story-profile-photo">
+                                                <img src="{{url_for('static', filename='hunger.png')}}" alt="..." width="50", height="50">
+                                            </div>
+                                            <small>Tributes</small>
+                                        </div>
+                                    </button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn m-0">
+                                        <div class="d-flex flex-column align-items-center">
+                                            <div
+                                                class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary story-profile-photo">
+                                                <img src="{{url_for('static', filename='diver.png')}}" alt="..." width="50", height="50">
+                                            </div>
+                                            <small>Initiates</small>
+                                        </div>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- User Profile End -->
-</section>
 
-<section class="profile">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-12">
-                <!-- All Playlists Content -->
-                <div class="play">
-                    <h2 class="title ur-rooms">Your Rooms</h2>
-                    <div class="container">
-                        <div class="row">
-                            {% for room in rooms %}
-                            <div class="col-md-4">
-                                <div class="card p-2 m-2">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ room.room_name }}</h5>
-                                        <a href="/rooms/{{ room._id.room_id }}" class="btn btn-primary btn-md">View Room</a>
+                    
+                    <!-- END OF STORIES -->
+
+                      <!-- START OF POST 1 -->
+                      <div class="d-flex flex-column mt-4 mb-4">
+
+                        <div class="card">
+                            <div class="card-header p-3">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div
+                                        class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary post-profile-photo mr-3">
+                                        <img src="{{url_for('static', filename='Logo.png')}}" alt="..." width="30", height="30">
                                     </div>
+                                    <span class="font-weight-bold">noveltea</span>
                                 </div>
                             </div>
-                            {% endfor %}
+                            <div class="card-main
+                              p-0">
+                                <div class="embed-responsive embed-responsive-1by1">
+                                    <img class="embed-responsive-item" src="{{url_for('static', filename='night.jpg')}}" />
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-between pl-3 pr-3 pt-3 pb-1">
+                                    <ul class="list-inline d-flex flex-row align-items-center m-0">
+                                        <li class="list-inline-item">
+                                            <button class="btn p-0">
+                                              <i class="far fa-heart fa-2x"></i>
+                                            </button>
+                                        </li>
+                                        <li class="list-inline-item ml-2">
+                                            <button class="btn p-0">
+                                              <i class="far fa-comment fa-2x"></i>
+                                            </button>
+                                        </li>
+                                        <li class="list-inline-item ml-2">
+                                            <button class="btn p-0">
+                                              <i class="far fa-share-square fa-2x"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="pl-3 pr-3 pb-2">
+                                    <strong class="d-block">56 likes</strong>
+                                    <strong class="d-block">noveltea</strong>
+                                    <p class="d-block mb-1">Book Suggestion: Night Circus</p>
+                                    <button class="btn p-0">
+                                        <span class="text-muted">View all 8 comments</span>
+                                    </button>
+
+                                    <div>
+                                        <div>
+                                            <strong>vivi03</strong>
+                                            <span>Best detailed book I've ever read</span>
+                                        </div>
+                                        <div>
+                                            <strong>alice_jung</strong>
+                                            <span>Plot is amazing</span>
+                                        </div>
+                                        <div>
+                                            <strong>veggie.mir</strong>
+                                            <span>Thanks for the suggestion!</span>
+                                        </div>
+                                    </div>
+
+                                    <small class="text-muted">4 HOURS AGO</small>
+                                </div>
+                            </div>
                         </div>
-                    </div>    
+
+                    </div>
+                    <!-- END OF POST 1-->
+
+                    <!-- START OF POST 2 -->
+                    <div class="d-flex flex-column mt-4 mb-4">
+
+                        <div class="card">
+                            <div class="card-header p-3">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div
+                                        class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary post-profile-photo mr-3">
+                                        <img src="{{url_for('static', filename='Logo.png')}}" alt="..." width="30", height="30">
+                                    </div>
+                                    <span class="font-weight-bold">nirdla_</span>
+                                </div>
+                            </div>
+                            <div class="card-main
+                              p-0">
+                                <div class="embed-responsive embed-responsive-1by1">
+                                    <img class="embed-responsive-item" src="{{url_for('static', filename='infernal.jpg')}}" />
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-between pl-3 pr-3 pt-3 pb-1">
+                                    <ul class="list-inline d-flex flex-row align-items-center m-0">
+                                      <li class="list-inline-item">
+                                        <button class="btn p-0">
+                                          <i class="far fa-heart fa-2x"></i>
+                                        </button>
+                                    </li>
+                                    <li class="list-inline-item ml-2">
+                                        <button class="btn p-0">
+                                          <i class="far fa-comment fa-2x"></i>
+                                        </button>
+                                    </li>
+                                    <li class="list-inline-item ml-2">
+                                        <button class="btn p-0">
+                                          <i class="far fa-share-square fa-2x"></i>
+                                        </button>
+                                    </li>
+                                    </ul>
+                                </div>
+
+                                <div class="pl-3 pr-3 pb-2">
+                                    <strong class="d-block">77 likes</strong>
+                                    <strong class="d-block">noveltea</strong>
+                                    <p class="d-block mb-1">Series Suggestion: The Mortal Instruments</p>
+                                    <button class="btn p-0">
+                                        <span class="text-muted">View all 10 comments</span>
+                                    </button>
+
+                                    <div>
+                                        <div>
+                                            <strong>hae-in</strong>
+                                            <span>One of the best friendships ever</span>
+                                        </div>
+                                        <div>
+                                            <strong>rosalie</strong>
+                                            <span>THIS MADE ME SAD AGAIN</span>
+                                        </div>
+                                        <div>
+                                            <strong>mirimura</strong>
+                                            <span>Time to go read it, totally forgot this existed</span>
+                                        </div>
+                                    </div>
+
+                                    <small class="text-muted">1 WEEK AGO</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END OF POST 2-->
+
+
+                    <!-- START OF POST 3 -->
+                    <div class="d-flex flex-column mt-4 mb-4">
+
+                        <div class="card">
+                            <div class="card-header p-3">
+                                <div class="d-flex flex-row align-items-center">
+                                    <div
+                                        class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-secondary post-profile-photo mr-3">
+                                        <img src="{{url_for('static', filename='Logo.png')}}" alt="..." width="30", height="30">
+                                    </div>
+                                    <span class="font-weight-bold">noveltea</span>
+                                </div>
+                            </div>
+                            <div class="card-main
+                              p-0">
+                                <div class="embed-responsive embed-responsive-1by1">
+                                    <img class="embed-responsive-item" src="{{url_for('static', filename='tog.jpg')}}" />
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-between pl-3 pr-3 pt-3 pb-1">
+                                    <ul class="list-inline d-flex flex-row align-items-center m-0">
+                                      <li class="list-inline-item">
+                                          <button class="btn p-0">
+                                            <i class="far fa-heart fa-2x"></i>
+                                          </button>
+                                      </li>
+                                      <li class="list-inline-item ml-2">
+                                          <button class="btn p-0">
+                                            <i class="far fa-comment fa-2x"></i>
+                                          </button>
+                                      </li>
+                                      <li class="list-inline-item ml-2">
+                                          <button class="btn p-0">
+                                            <i class="far fa-share-square fa-2x"></i>
+                                          </button>
+                                      </li>
+                                    </ul>
+                                </div>
+
+                                <div class="pl-3 pr-3 pb-2">
+                                    <strong class="d-block">200k likes</strong>
+                                    <strong class="d-block">noveltea</strong>
+                                    <p class="d-block mb-1">
+                                        Monthly Spotlights: Throne of Glass Series.
+                                        ___________________________________________
+                                        <br>
+                                        Description: 
+                                        After serving out a year of hard labor in the salt mines of Endovier for her crimes, 18-year-old assassin Celaena Sardothien is dragged before the Crown Prince. Prince Dorian offers her her freedom on one condition: she must act as his champion in a competition to find a new royal assassin.
+                                        <br><br>
+                                        Her opponents are men-thieves and assassins and warriors from across the empire, each sponsored by a member of the king's council. If she beats her opponents in a series of eliminations, she'll serve the kingdom for four years and then be granted her freedom. Celaena finds her training sessions with the captain of the guard, Westfall, challenging and exhilarating. But she's bored stiff by court life. Things get a little more interesting when the prince starts to show interest in her ... but it's the gruff Captain Westfall who seems to understand her best.
+                                        <br><br>
+                                        Then one of the other contestants turns up dead ... quickly followed by another. Can Celaena figure out who the killer is before she becomes a victim? As the young assassin investigates, her search leads her to discover a greater destiny than she could possibly have imagined.
+                                        <br><br>
+                                        <br>
+                                        Will this soon overtake one of the main fandoms? </p>
+                                    <button class="btn p-0">
+                                        <span class="text-muted">View all 1,435 comments</span>
+                                    </button>
+
+                                    <div>
+                                        <div>
+                                            <strong>faebaes</strong>
+                                            <span>Fandom Board prepare yourself</span>
+                                        </div>
+                                        <div>
+                                            <strong>aelin_4</strong>
+                                            <span>My username is totally not a spoiler... But enjoy the series!</span>
+                                        </div>
+                                        <div>
+                                            <strong>potatoes_for_life</strong>
+                                            <span>I love potatoes but I love this more</span>
+                                        </div>
+                                    </div>
+
+                                    <small class="text-muted">1 MONTH AGO</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- END OF POST 3-->
                 </div>
-            </div>
-        </div>
-</section>
+
+                <!-- USER -->
+                <div class="col-4">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h5 class="text-muted font-weight-bold pt-1">Account</h5>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <div class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border sidenav-profile-photo">
+                            <i class="fas fa-user-circle fa-3x"></i>
+                        </div>
+                        <div class="user_info ml-3">
+                            <span>{{ current_user.username }}</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Messages -->
+                    <div class="mt-4">
+                        <div class="d-flex flex-row justify-content-between">
+                            <h5 class="text-muted font-weight-bold">Messages</h5>
+                        </div>
+
+                        <!-- Message 1-->
+                        {% for room in rooms %}
+                        <div class="d-flex flex-row justify-content-between align-items-center mt-3">
+                          <div class="d-flex flex-row align-items-center">
+                              <div
+                                  class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border sugest-profile-photo">
+                                  <img src="{{url_for('static', filename='Logo.png')}}" alt="..." width="30", height="30">
+                              </div>
+                              <strong class="ml-3 sugest-username">{{ room.room_name }}</strong>
+                          </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                          <div class="d-flex flex-row align-items-center ml-5">
+                            <a href="/rooms/{{ room._id.room_id }}" class="btn btn-primary btn-md">View Room</a>
+                          </div>
+                        </div>
+                        {% endfor %}
+                        <!-- End Message 1-->
+                    </div>
+                    <!-- End Messages-->
+
+                    
+                  </div>
+                <!-- End of User -->
+              </div>
+          </div>
+      </div>
+  </div>
+
+</main>
 
 {% endblock %}
-
