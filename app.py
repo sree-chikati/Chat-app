@@ -23,6 +23,10 @@ login_manager.init_app(app)
 def home():
     return render_template("home.html")
 
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
 @app.route('/profile')
 def profile():
     rooms = []

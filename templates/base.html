@@ -8,7 +8,7 @@
   <link rel="shortcut icon" class="fas fa-comment-dots">
   
 
-  <title>Chat App</title>
+  <title>Noveltea</title>
 
   <!-- BOOTSTRAP STYLESHEET LINK-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
   <nav class="navbar bg-light navbar-dark navbar-expand-lg">
     <div class="container">
       <a href="/" class="navbar-brand">
-        <i class="fas fa-comment-dots fa-2x"></i>
+        <img src="{{url_for('static', filename='Logo.png')}}" alt="" width="75", height="75">
       </a>
       
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,7 @@
                 <!-- Profile Route -->
                 <li class="nav-item">
                   <a href="/profile">Profile</a>
-              </li>
+                </li>
                 <!-- Create Room Route -->
                 <li class="nav-item">
                     <a href="/create_room">Create Room</a>
@@ -55,6 +55,10 @@
                 <!-- Home Route -->
                 <li class="nav-item">
                     <a href="/" class="active">Home</a>
+                </li>
+                <!-- About Route -->
+                <li class="nav-item">
+                  <a href="/about">About</a>
                 </li>
                 <!-- Signup Route -->
                 <li class="nav-item">
