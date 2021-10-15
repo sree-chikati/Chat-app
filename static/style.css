@@ -29,7 +29,7 @@ h1{
   color: black;
 }
 
-.title::before {
+/* .title::before {
   content: '';
   background-color: #8BC43F;
   height: 2px;
@@ -51,7 +51,7 @@ h1{
   display: block;
   transform: translateY(24px);
 }
-  
+   */
   
   /*============= TOP BAR HEADER =============*/
   .top-bar {
@@ -151,6 +151,75 @@ h1{
  }
 
 
+/*===== CREATE ROOM =====*/
+.create_room{
+  padding: 5rem;
+  padding: 80px 0;
+}
+
+/*===== PROFILE =====*/
+.user {
+  padding: 30px 0 0 0;
+}
+
+.ur-rooms{
+  padding-bottom: 3rem;
+}
+
+.profile{
+  padding: 0 0 180px 0;
+}
+
+.card-title{
+  color: #292929!important;
+}
+
+.fa-user-circle{
+  color: #8BC43F;
+}
+
+/*===== VIEW ROOM =====*/
+.chat-room{
+  margin: 4rem;
+}
+
+.user-box{
+  size: 100px;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.messages-box,
+.chat-box {
+  height: 510px;
+  overflow-y: scroll;
+}
+
+.room-box{
+  padding: 1rem;
+}
+
+.member-box h5{
+  padding: 1rem;
+  color:#292929!important;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+input::placeholder {
+  font-size: 0.9rem;
+  color: #999;
+}
+
+.fa-arrow-circle-left{
+  color: #8BC43F;
+}
+
+
 /*============= PROFILE =============*/
  .link-menu {
   color: black;
@@ -234,22 +303,22 @@ h1{
   }
 
   footer p{
-      padding: 1rem;
-      text-transform: uppercase;
+    color: white;
+    padding: 1rem;
+    text-transform: uppercase;
   }
 
   footer span{
       color:#7B593F;
   }
 
-  .github, .instagram{
+  .fa-github{
       color: white;
       text-decoration: none;
-      padding: 1rem 1rem 0 1rem;
   }
 
 
-  .github:hover, .instagram:hover{
+  .fa-github:hover{
       color: #7B593F;
   }
 
